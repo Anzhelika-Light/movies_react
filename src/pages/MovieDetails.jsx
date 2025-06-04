@@ -1,12 +1,25 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link, Outlet } from "react-router-dom";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
 
   //   useEffect(() => {}, []);
 
-  return <div>Movie details: {movieId}</div>;
+  return (
+    <div>
+      <h1>Movie details: {movieId}</h1>
+      <ul>
+        <li>
+          <Link to="cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet />
+    </div>
+  );
 };
 
 export default MovieDetails;
