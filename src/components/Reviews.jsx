@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { getMovieReviews } from "../services/movies-api";
 
 const Reviews = () => {
   const { movieId } = useParams();

@@ -14,8 +14,6 @@ const Home = () => {
       try {
         setLoading(true);
         const data = await getMovies(page);
-        console.log(data);
-        console.log(page);
         totalMoviesCount = data.total_results;
 
         setItems((prevItems) => [...prevItems, ...data.results]);
