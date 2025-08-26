@@ -3,15 +3,17 @@ import { useParams, Link, Outlet } from "react-router-dom";
 import { getMovieDetails } from "../services/movies-api";
 
 const MovieDetails = () => {
-  const { movieId } = useParams();
-
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const { movieId } = useParams();
+  console.log(movieId);
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
+        console.log("Wow!");
         setLoading(true);
         const data = await getMovieDetails(movieId);
         console.log("MovieDetails: ", data);
@@ -36,6 +38,7 @@ const MovieDetails = () => {
           Load more
         </button>
       )} */}
+      <h2>Additional information</h2>
       <ul>
         <li>
           <Link to="cast">Cast</Link>

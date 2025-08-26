@@ -8,7 +8,7 @@ const Movies = () => {
   const [items, setItems] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const movieId = searchParams.get("movieId");
-  console.log(movieId);
+  // console.log(movieId);
   // const [search, setSearch] = useState("");
   // const [items, setItems] = useState([]);
   // const [loading, setLoading] = useState(false);
