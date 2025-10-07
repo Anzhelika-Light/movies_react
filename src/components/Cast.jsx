@@ -35,7 +35,7 @@ const Cast = () => {
 
   return (
     <div>
-      <h2>Cast</h2>
+      {/* <h2>Cast</h2> */}
       {isInfo && <ul>{elements}</ul>}
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}

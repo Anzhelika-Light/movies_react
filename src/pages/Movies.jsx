@@ -6,7 +6,7 @@ import { Link, useSearchParams } from "react-router-dom";
 
 const Movies = () => {
   // const [searchParams, setSearchParams] = useSearchParams();
-  // const movieId = searchParams.get("movieId");
+  // const query = searchParams.get("query");
 
   const [search, setSearch] = useState("");
   const [items, setItems] = useState([]);
@@ -36,6 +36,7 @@ const Movies = () => {
     setSearch(search);
     setPage(1);
     setItems([]);
+    // setSearchParams({ query: search });
   };
 
   const loadMore = () => {

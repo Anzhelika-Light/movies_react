@@ -3,12 +3,12 @@ import { useParams, Link, Outlet } from "react-router-dom";
 import { getMovieDetails } from "../services/movies-api";
 
 const MovieDetails = () => {
+  const { movieId } = useParams();
+  console.log(movieId);
+
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-
-  const { movieId } = useParams();
-  console.log(movieId);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
