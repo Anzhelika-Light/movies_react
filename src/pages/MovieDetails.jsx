@@ -13,11 +13,10 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        console.log("Wow!");
         setLoading(true);
         const data = await getMovieDetails(movieId);
-        console.log("MovieDetails: ", data);
-        setItems((prevItems) => [...prevItems, ...data.results]);
+        console.log("movie details:", data);
+        setItems((prevItems) => [...prevItems, ...data]);
       } catch (error) {
         setError(error);
       } finally {
