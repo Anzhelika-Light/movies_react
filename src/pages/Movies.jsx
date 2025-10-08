@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
 import MovieSearchForm from "../components/MovieSearchForm.jsx";
-import MoviesList from "../components/MoviesList.jsx";
+import MoviesList from "../components/MoviesList/MoviesList.jsx";
 import { searchMovies } from "../services/movies-api";
-import { Link, useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Movies = () => {
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const query = searchParams.get("query");
-
+  const location = useLocation();
   const [search, setSearch] = useState("");
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -36,7 +34,6 @@ const Movies = () => {
     setSearch(search);
     setPage(1);
     setItems([]);
-    // setSearchParams({ query: search });
   };
 
   const loadMore = () => {
@@ -45,27 +42,10 @@ const Movies = () => {
 
   const isMovies = Boolean(items.length);
 
-  // const visibleMovies = items.filter((item) => item.includes(movieId));
-
   return (
-    // <div>
-    //   <input
-    //     type="text"
-    //     value={movieId}
-    //     onChange={(e) => setSearchParams({ movieId: e.target.value })}
-    //   />
-    //   {/* <button onClick={() => setSearchParams({ c: "kuku" })}>Search</button> */}
-    //   <ul>
-    //     {["dog-1", "dog-2", "dog-3", "dog-4", "dog-5"].map((dog) => (
-    //       <li key={dog}>
-    //         <Link to={`${dog}`}>{dog}</Link>
-    //       </li>
-    //     ))}
-    //   </ul>
-    // </div>
     <div>
       <MovieSearchForm onSubmit={onSearch} />
-      {isMovies && <MoviesList items={items} />}
+      {isMovies && <MoviesList items={items} location={location} />}
 
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}

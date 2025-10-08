@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import MoviesList from "../components/MoviesList";
+import MoviesList from "../components/MoviesList/MoviesList";
 import { getMovies } from "../services/movies-api";
 
 const Home = () => {
@@ -15,7 +15,6 @@ const Home = () => {
         setLoading(true);
         const data = await getMovies(page);
         totalMoviesCount = data.total_results;
-        // console.log(data);
         setItems((prevItems) => [...prevItems, ...data.results]);
       } catch (error) {
         setError(error);
