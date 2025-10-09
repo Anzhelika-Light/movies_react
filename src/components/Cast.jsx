@@ -27,11 +27,12 @@ const Cast = () => {
 
   const elements = items.map(({ id, profile_path, name, character }) => (
     <li key={id}>
-      <img src={profile_path} alt={`${name} photo`} />
+      {/* <img src={profile_path} alt={`${name} photo`} /> */}
       <p>{name}</p>
       <p>{character}</p>
     </li>
   ));
+  console.log(items);
 
   return (
     <div>

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import MovieSearchForm from "../components/MovieSearchForm.jsx";
 import MoviesList from "../components/MoviesList/MoviesList.jsx";
 import { searchMovies } from "../services/movies-api";
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 
 const Movies = () => {
   const location = useLocation();
@@ -11,6 +11,9 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get("query") ?? "";
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -30,8 +33,18 @@ const Movies = () => {
     }
   }, [page, search]);
 
-  const onSearch = (search) => {
+  // const updateQueryString = (e) => {
+  //   const nextParams = e.target.value !== "" ? { query: e.target.value } : {};
+  //   setSearchParams(nextParams);
+  // };
+
+  const updateQueryString = (search) => {
+    const nextParams = search !== "" ? { query: search } : {};
+    setSearchParams(nextParams);
+  };
+  const onSearch = ({ search }) => {
     setSearch(search);
+    updateQueryString(search);
     setPage(1);
     setItems([]);
   };

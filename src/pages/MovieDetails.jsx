@@ -5,12 +5,11 @@ import { StyledLink, Container } from "./MovieDetails.styled";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  console.log(movieId);
 
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? "/movies");
 
-  const [items, setItems] = useState([]);
+  const [item, setItem] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -20,24 +19,43 @@ const MovieDetails = () => {
         setLoading(true);
         const data = await getMovieDetails(movieId);
         console.log("movie details:", data);
-        setItems((prevItems) => [...prevItems, ...data]);
+        setItem(data);
       } catch (error) {
         setError(error);
       } finally {
         setLoading(false);
       }
-      fetchMovieDetails();
     };
+    fetchMovieDetails();
   }, [movieId]);
 
-  console.log(location);
-  console.log(backLinkLocationRef);
-
+  // console.log(location);
+  // console.log(backLinkLocationRef);
+  const { title, vote_average, overview, genres, poster_path } = item;
+  console.log(genres);
+  console.log(title);
   return (
     <Container>
       <StyledLink to={backLinkLocationRef.current}>Go back</StyledLink>
-      <h1>Movie details: {movieId}</h1>
+      <h1>Movie details: </h1>
+      <img src={poster_path} alt={`poster of ${title} movie`} />
 
+      <div>
+        <p>
+          <b>{title}</b>
+        </p>
+        <p>
+          <b>User score:</b> {vote_average}
+        </p>
+        <p>
+          <b>Overview:</b> {overview}
+        </p>
+        {/* {genres.map(({ name }) => (
+          <p>
+            <b>Genres:</b> {name}
+          </p>
+        ))} */}
+      </div>
       {/* {isMovies && <MoviesList items={items} />} */}
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}
