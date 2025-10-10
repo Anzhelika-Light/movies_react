@@ -12,16 +12,12 @@ const MovieSearchForm = ({ onSubmit }) => {
 
   const handleChange = ({ target }) => {
     const { name, value } = target;
-    setState({ ...state, [name]: value });
+    setState((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({ ...state });
-    reset();
-  };
-
-  const reset = () => {
     setState({ ...INITIAL_STATE });
   };
 

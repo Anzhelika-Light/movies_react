@@ -33,7 +33,7 @@ const MovieDetails = () => {
   // console.log(backLinkLocationRef);
   const { title, vote_average, overview, genres, poster_path } = item;
   console.log(genres);
-  console.log(title);
+
   return (
     <Container>
       <StyledLink to={backLinkLocationRef.current}>Go back</StyledLink>
@@ -50,11 +50,10 @@ const MovieDetails = () => {
         <p>
           <b>Overview:</b> {overview}
         </p>
-        {/* {genres.map(({ name }) => (
-          <p>
-            <b>Genres:</b> {name}
-          </p>
-        ))} */}
+        <p>
+          <b>Genres: </b>
+          {genres?.map(({ name }) => name).join(", ")}
+        </p>
       </div>
       {/* {isMovies && <MoviesList items={items} />} */}
       {loading && <p>...loading</p>}

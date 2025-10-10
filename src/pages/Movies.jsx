@@ -5,8 +5,9 @@ import { searchMovies } from "../services/movies-api";
 import { useLocation, useSearchParams } from "react-router-dom";
 
 const Movies = () => {
-  const location = useLocation();
-  const [search, setSearch] = useState("");
+  // const location = useLocation();
+  // console.log(location);
+  // const [search, setSearch] = useState("");
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -19,7 +20,7 @@ const Movies = () => {
     const fetchMovies = async () => {
       try {
         setLoading(true);
-        const data = await searchMovies(search, page);
+        const data = await searchMovies(query, page);
         console.log(data);
         setItems((prevItems) => [...prevItems, ...data.results]);
       } catch (error) {
@@ -28,23 +29,25 @@ const Movies = () => {
         setLoading(false);
       }
     };
-    if (search) {
+    if (query) {
       fetchMovies();
     }
-  }, [page, search]);
+  }, [page, query]);
 
   // const updateQueryString = (e) => {
   //   const nextParams = e.target.value !== "" ? { query: e.target.value } : {};
   //   setSearchParams(nextParams);
   // };
 
-  const updateQueryString = (search) => {
+  // const updateQueryString = (search) => {
+  //   const nextParams = search !== "" ? { query: search } : {};
+  //   setSearchParams(nextParams);
+  // };
+
+  const onSearch = ({ search }) => {
+    // setSearch(search);
     const nextParams = search !== "" ? { query: search } : {};
     setSearchParams(nextParams);
-  };
-  const onSearch = ({ search }) => {
-    setSearch(search);
-    updateQueryString(search);
     setPage(1);
     setItems([]);
   };
@@ -58,7 +61,7 @@ const Movies = () => {
   return (
     <div>
       <MovieSearchForm onSubmit={onSearch} />
-      {isMovies && <MoviesList items={items} location={location} />}
+      {isMovies && <MoviesList items={items} />}
 
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}
