@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import MoviesList from "../components/MoviesList/MoviesList";
+import Container from "../components/Container";
 import { getMovies } from "../services/movies-api";
 
 const Home = () => {
@@ -32,7 +33,7 @@ const Home = () => {
   const isMovies = Boolean(items.length);
 
   return (
-    <div>
+    <Container>
       <h1>The most popular movies for today</h1>
       {isMovies && <MoviesList items={items} />}
       {loading && <p>...loading</p>}
@@ -42,7 +43,7 @@ const Home = () => {
           Load more
         </button>
       )}
-    </div>
+    </Container>
   );
 };
 

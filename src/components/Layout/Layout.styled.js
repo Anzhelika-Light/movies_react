@@ -3,13 +3,22 @@ import { NavLink } from "react-router-dom";
 
 export const Nav = styled.nav`
   display: flex;
-  min-width: 1000px;
   gap: 20px;
   justify-content: center;
-  border: 1px solid blue;
-  padding: 5px 10px;
+  border-bottom: 1px solid black;
+  padding: 10px 15px;
+  margin-bottom: 12px;
 `;
 
 export const StyledNavLink = styled(NavLink)`
   color: darkblue;
+  text-decoration: none;
+
+  &.active {
+    font-weight: bold;
+  }
+
+  &:hover {
+    border-bottom: 1px solid;
+  }
 `;

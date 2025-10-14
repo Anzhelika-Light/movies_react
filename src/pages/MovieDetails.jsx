@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
 import { getMovieDetails } from "../services/movies-api";
-import { StyledLink, Container } from "./MovieDetails.styled";
+import Container from "../components/Container";
+import { StyledLink } from "./MovieDetails.styled";
 
 const MovieDetails = () => {
   const { movieId } = useParams();

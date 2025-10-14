@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MovieSearchForm from "../components/MovieSearchForm.jsx";
 import MoviesList from "../components/MoviesList/MoviesList.jsx";
+import Container from "../components/Container.jsx";
 import { searchMovies } from "../services/movies-api";
 import { useLocation, useSearchParams } from "react-router-dom";
 
@@ -59,7 +60,7 @@ const Movies = () => {
   const isMovies = Boolean(items.length);
 
   return (
-    <div>
+    <Container>
       <MovieSearchForm onSubmit={onSearch} />
       {isMovies && <MoviesList items={items} />}
 
@@ -70,7 +71,7 @@ const Movies = () => {
           Load more
         </button>
       )}
-    </div>
+    </Container>
   );
 };
 
