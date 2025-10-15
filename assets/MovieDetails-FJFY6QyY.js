@@ -1,4 +1,4 @@
-import{s as b,L as o,b as y,a as L,r as s,j as e,O as k}from"./index-DDwkMyRQ.js";import{a as w}from"./movies-api-Fd7KCi40.js";import{C as S}from"./Container-BtKvtEGr.js";const M=b(o)`
+import{s as b,L as o,b as y,a as L,r as s,j as e,O as k}from"./index-B26k_tWB.js";import{a as w}from"./movies-api-Fd7KCi40.js";import{C as S}from"./Container-CROPAJKt.js";const M=b(o)`
   color: grey;
   display: block;
   padding-top: 10px;
