@@ -10,6 +10,6 @@ import react from "@vitejs/plugin-react-swc";
 export default defineConfig(({ command }) => {
   return {
     plugins: [react()],
-    base: command === "build" ? "/Movies_React/" : "/",
+    base: command === "build" ? "/movies_react/" : "/",
   };
 });
