@@ -38,7 +38,6 @@ const Reviews = () => {
 
   return (
     <div>
-      {/* <h2>Reviews</h2> */}
       {isInfo && <ul>{elements}</ul>}
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}

@@ -6,9 +6,4 @@ export default defineConfig({
   plugins: [react()],
 });
 
-// export default defineConfig(({ command }) => {
-//   return {
-//     plugins: [react()],
-//     base: command === "build" ? "/movies_react/" : "/",
-//   };
-// });
+// https://movies-react-virid.vercel.app/

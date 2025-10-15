@@ -30,8 +30,6 @@ const MovieDetails = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  // console.log(location);
-  // console.log(backLinkLocationRef);
   const { title, vote_average, overview, genres, poster_path } = item;
   console.log(genres);
 
@@ -56,14 +54,10 @@ const MovieDetails = () => {
           {genres?.map(({ name }) => name).join(", ")}
         </p>
       </div>
-      {/* {isMovies && <MoviesList items={items} />} */}
+
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}
-      {/* {isMovies && (
-        <button type="button" onClick={loadMore}>
-          Load more
-        </button>
-      )} */}
+
       <h2>Additional information</h2>
       <ul>
         <li>

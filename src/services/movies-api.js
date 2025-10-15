@@ -58,22 +58,3 @@ export const getMovieReviews = async (id) => {
   return data;
 };
 
-// Trending movies:
-// Страница с описанием API: https://developer.themoviedb.org/reference/trending-movies
-// Адрес для запроса: https://api.themoviedb.org/3/trending/movie/day
-
-// Search movies:
-// Страница с описанием API: https://developer.themoviedb.org/reference/search-movie
-// Адрес для запроса: https://api.themoviedb.org/3/search/movie
-
-// Movie details:
-// Страница с описанием API: https://developer.themoviedb.org/reference/movie-details
-// Адрес для запроса: https://api.themoviedb.org/3/movie/{movie_id}
-
-// Movie credits:
-// Страница с описанием API: https://developer.themoviedb.org/reference/movie-credits
-// Адрес для запроса: https://api.themoviedb.org/3/movie/movie_id/credits
-
-// Movie reviews:
-// Страница с описанием API: https://developer.themoviedb.org/reference/movie-reviews
-// Адрес для запроса: https://api.themoviedb.org/3/movie/movie_id/reviews
