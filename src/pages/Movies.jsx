@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
+import { Typography, Button, Flex } from "antd";
 import MovieSearchForm from "../components/MovieSearchForm.jsx";
 import MoviesList from "../components/MoviesList/MoviesList.jsx";
 import Container from "../components/Container.jsx";
 import { searchMovies } from "../services/movies-api";
 import { useLocation, useSearchParams } from "react-router-dom";
-import LoadMoreBtn from "../components/Button.jsx";
 
 const Movies = () => {
   const [items, setItems] = useState([]);
@@ -33,7 +33,7 @@ const Movies = () => {
     }
   }, [page, query]);
 
-  const onSearch = ({ search }) => {
+  const onSearch = (search) => {
     const nextParams = search !== "" ? { query: search } : {};
     setSearchParams(nextParams);
     setPage(1);
@@ -53,11 +53,16 @@ const Movies = () => {
 
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}
-      {isMovies && (
-        <button type="button" onClick={loadMore}>
-          Load more
-        </button>
-        // <LoadMoreBtn onClick={loadMore} />
+      {isMovies && !loading && (
+        <Flex gap="small" wrap>
+          <Button
+            type="primary"
+            onClick={loadMore}
+            styles={{ marginTop: "10px" }}
+          >
+            Load More
+          </Button>
+        </Flex>
       )}
     </Container>
   );
