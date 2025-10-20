@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { lazy } from "react";
-
+import PageLayout from "./components/Layout/Layout";
 import Layout from "./components/Layout/Layout";
 
 import "./styles/style.css";
@@ -14,7 +14,7 @@ const Reviews = lazy(() => import("./components/Reviews"));
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<PageLayout />}>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
         <Route path="movies/:movieId" element={<MovieDetails />}>

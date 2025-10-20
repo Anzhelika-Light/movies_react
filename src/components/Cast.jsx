@@ -27,7 +27,10 @@ const Cast = () => {
 
   const elements = items.map(({ id, profile_path, name, character }) => (
     <li key={id}>
-      {/* <img src={profile_path} alt={`${name} photo`} /> */}
+      <img
+        src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+        alt={`${name} photo`}
+      />
       <p>{name}</p>
       <p>{character}</p>
     </li>

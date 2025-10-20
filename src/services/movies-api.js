@@ -57,4 +57,3 @@ export const getMovieReviews = async (id) => {
   );
   return data;
 };
-

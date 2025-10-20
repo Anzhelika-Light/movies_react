@@ -4,11 +4,9 @@ import MoviesList from "../components/MoviesList/MoviesList.jsx";
 import Container from "../components/Container.jsx";
 import { searchMovies } from "../services/movies-api";
 import { useLocation, useSearchParams } from "react-router-dom";
+import LoadMoreBtn from "../components/Button.jsx";
 
 const Movies = () => {
-  // const location = useLocation();
-  // console.log(location);
-  // const [search, setSearch] = useState("");
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -22,7 +20,7 @@ const Movies = () => {
       try {
         setLoading(true);
         const data = await searchMovies(query, page);
-        console.log(data);
+        // console.log(data);
         setItems((prevItems) => [...prevItems, ...data.results]);
       } catch (error) {
         setError(error);
@@ -35,18 +33,7 @@ const Movies = () => {
     }
   }, [page, query]);
 
-  // const updateQueryString = (e) => {
-  //   const nextParams = e.target.value !== "" ? { query: e.target.value } : {};
-  //   setSearchParams(nextParams);
-  // };
-
-  // const updateQueryString = (search) => {
-  //   const nextParams = search !== "" ? { query: search } : {};
-  //   setSearchParams(nextParams);
-  // };
-
   const onSearch = ({ search }) => {
-    // setSearch(search);
     const nextParams = search !== "" ? { query: search } : {};
     setSearchParams(nextParams);
     setPage(1);
@@ -70,6 +57,7 @@ const Movies = () => {
         <button type="button" onClick={loadMore}>
           Load more
         </button>
+        // <LoadMoreBtn onClick={loadMore} />
       )}
     </Container>
   );

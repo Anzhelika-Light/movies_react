@@ -19,6 +19,6 @@ export const StyledNavLink = styled(NavLink)`
   }
 
   &:hover {
-    border-bottom: 1px solid;
+    scale: 1.2;
   }
 `;
