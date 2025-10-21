@@ -2,14 +2,25 @@ import { Link, useLocation } from "react-router-dom";
 import { Col, Row } from "antd";
 const style = { background: "#bbd4e8ff", padding: "0 0 8px" };
 import { Img, Title } from "./MoviesList.styled";
+import posterMissingPath from "../../assets/Poster_missing.png";
+
+console.log(posterMissingPath);
 
 const MoviesList = ({ items }) => {
   const location = useLocation();
-  const elements = items.map(({ id, title, poster_path }) => (
+  const elements = items.map(({ id, title, poster_path, backdrop_path }) => (
     <Col className="gutter-row" span={6} key={id}>
       <div style={style}>
         <Link to={`/movies/${id}`} state={{ from: location }}>
-          <Img src={`https://image.tmdb.org/t/p/w200${poster_path}`} alt="" />
+          <Img
+            src={
+              poster_path
+                ? `https://image.tmdb.org/t/p/w200${poster_path}`
+                : posterMissingPath
+            }
+            alt=""
+          />
+
           <Title>{title}</Title>
         </Link>
       </div>

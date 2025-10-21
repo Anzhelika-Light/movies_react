@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+// import { Button } from "antd";
 
 export const List = styled.ul`
   list-style: none;
@@ -16,3 +17,21 @@ export const Title = styled.p`
   margin-top: 10px;
   font-weight: bold;
 `;
+
+export const BackgroundImg = styled.div`
+  width: 268px;
+  height: 402px;
+  background-size: cover;
+`;
+
+// export const CustomButton = styled(Button)`
+//   background-color: #722ed1;
+//   border-color: #722ed1;
+//   border-radius: 12px;
+//   color: white;
+
+//   &:hover {
+//     background-color: #9254de;
+//     border-color: #9254de;
+//   }
+// `;

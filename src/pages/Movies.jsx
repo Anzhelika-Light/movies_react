@@ -20,7 +20,7 @@ const Movies = () => {
       try {
         setLoading(true);
         const data = await searchMovies(query, page);
-        // console.log(data);
+        console.log(data);
         setItems((prevItems) => [...prevItems, ...data.results]);
       } catch (error) {
         setError(error);
