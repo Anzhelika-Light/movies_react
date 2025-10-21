@@ -45,11 +45,11 @@ const Home = () => {
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}
       {isMovies && !loading && (
-        <Flex gap="small" wrap>
+        <Flex gap="small" justify="center" wrap>
           <Button
             type="primary"
             onClick={loadMore}
-            styles={{ marginTop: "10px" }}
+            style={{ marginTop: "10px" }}
           >
             Load More
           </Button>

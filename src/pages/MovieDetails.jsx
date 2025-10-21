@@ -58,16 +58,11 @@ const MovieDetails = () => {
               {title}
             </Paragraph>
 
-            {/* <p>
-          <b>{title}</b>
-        </p> */}
-            <p>
+            <div>
               <Text strong>User score: </Text>
               {vote_average}
-
-              {/* <b>User score:</b> {vote_average} */}
-            </p>
-            <p>
+            </div>
+            <div>
               <Text strong>Overview: </Text>
               <Typography.Paragraph
                 ellipsis={{
@@ -79,14 +74,11 @@ const MovieDetails = () => {
               >
                 {overview}
               </Typography.Paragraph>
-
-              {/* <b>Overview:</b> {overview} */}
-            </p>
-            <p>
+            </div>
+            <div>
               <Text strong>Genres: </Text>
-              {/* <b>Genres: </b> */}
               {genres?.map(({ name }) => name).join(", ")}
-            </p>
+            </div>
           </div>
         </Col>
       </Row>

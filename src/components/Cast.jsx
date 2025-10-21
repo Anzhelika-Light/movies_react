@@ -1,6 +1,18 @@
 import { useParams } from "react-router-dom";
+import { Col, Row } from "antd";
 import { getMovieCredits } from "../services/movies-api";
 import { useState, useEffect } from "react";
+import { Typography } from "antd";
+
+import posterMissingPath from "../assets/Poster_missing.png";
+
+const { Title } = Typography;
+
+const style = {
+  background: "transparent",
+  padding: "0 0 8px",
+  textAlign: "center",
+};
 
 const Cast = () => {
   const [items, setItems] = useState([]);
@@ -26,20 +38,35 @@ const Cast = () => {
   const isInfo = Boolean(items.length);
 
   const elements = items.map(({ id, profile_path, name, character }) => (
-    <li key={id}>
-      <img
-        src={`https://image.tmdb.org/t/p/w200${profile_path}`}
-        alt={`${name} photo`}
-      />
-      <p>{name}</p>
-      <p>{character}</p>
-    </li>
+    <Col className="gutter-row" span={6} key={id}>
+      <div style={style}>
+        {/* <img
+          src={
+            profile_path
+              ? `https://image.tmdb.org/t/p/w200${profile_path}`
+              : posterMissingPath
+          }
+          alt={`${name} photo`}
+        /> */}
+        <img
+          src={`https://image.tmdb.org/t/p/w200${profile_path}`}
+          alt={`${name} photo`}
+        />
+        <p>{name}</p>
+        <p>{character}</p>
+      </div>
+    </Col>
   ));
   console.log(items);
 
   return (
     <div>
-      {isInfo && <ul>{elements}</ul>}
+      <Title level={3}>Cast</Title>
+      {isInfo && (
+        // <Row gutter={[{ xs: 8, sm: 16, md: 24, lg: 32 }, 24]}>{elements}</Row>
+        <Row gutter={[16, 24]}>{elements}</Row>
+      )}
+
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}
     </div>

@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import posterMissingPath from "../../assets/Poster_missing.png";
+
 // import { Button } from "antd";
 
 export const List = styled.ul`
@@ -22,6 +24,10 @@ export const BackgroundImg = styled.div`
   width: 268px;
   height: 402px;
   background-size: cover;
+  background-image: url(${(props) =>
+    props.bg
+      ? `https://image.tmdb.org/t/p/w200${props.bg}`
+      : posterMissingPath});
 `;
 
 // export const CustomButton = styled(Button)`
