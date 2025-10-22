@@ -3,25 +3,39 @@ import { Outlet } from "react-router-dom";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 const { Header, Content, Footer } = Layout;
 import { NavLink } from "react-router-dom";
+import { useState } from "react";
 import { Nav, StyledNavLink } from "./Layout.styled";
 
-const items = [
-  { page: "Home page", to: "/" },
-  { page: "Movies collection", to: "/movies" },
-]
-  .map(({ page, to }) => <NavLink to={to}>{page}</NavLink>)
-  .map((item, index) => ({
-    key: index,
-    label: item,
-  }));
-
 const PageLayout = () => {
+  const [activeItem, setActiveItem] = useState(1);
+
+  const items = [
+    { id: 1, page: "Home page", to: "/" },
+    { id: 2, page: "Movies collection", to: "/movies" },
+  ]
+    .map(({ page, to, id }) => (
+      <StyledNavLink
+        to={to}
+        // className={`${activeItem === id ? "active" : ""}`}
+        onClick={() => setActiveItem(id)}
+        active={`${activeItem === id}`}
+      >
+        {page}
+      </StyledNavLink>
+    ))
+    .map((item, index) => ({
+      key: index,
+      label: item,
+    }));
+  console.log(activeItem);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
   return (
-    <Layout>
+    <Layout
+      style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}
+    >
       <Header
         style={{
           position: "sticky",
@@ -42,10 +56,7 @@ const PageLayout = () => {
         />
       </Header>
       <Content style={{ padding: "0 48px" }}>
-        <Breadcrumb
-          style={{ margin: "16px 0" }}
-          // items={[{ title: "Home" }, { title: "List" }, { title: "PageLayout" }]}
-        />
+        <Breadcrumb style={{ margin: "16px 0" }} />
         <div
           style={{
             padding: 24,
@@ -59,30 +70,11 @@ const PageLayout = () => {
           </Suspense>
         </div>
       </Content>
-      <Footer style={{ textAlign: "center" }}>
+      <Footer style={{ textAlign: "center", marginTop: "auto" }}>
         Ant Design ©{new Date().getFullYear()} Created by Ant UED
       </Footer>
     </Layout>
   );
 };
 
-// const Layout = () => {
-//   return (
-//     <div>
-//       <header>
-//         <Nav>
-//           <StyledNavLink to="/">Home page</StyledNavLink>
-//           <StyledNavLink to="/movies">Movies collection</StyledNavLink>
-//         </Nav>
-//       </header>
-//       <main>
-// <Suspense fallback={<div>Loading...</div>}>
-//   <Outlet />
-// </Suspense>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default Layout;
 export default PageLayout;

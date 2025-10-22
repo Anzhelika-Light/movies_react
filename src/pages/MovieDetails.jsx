@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef, Suspense } from "react";
 import { useParams, Link, Outlet, useLocation } from "react-router-dom";
-import { Space, Typography } from "antd";
+import { Typography } from "antd";
+import { BackgroundPoster } from "../components/MoviesList/MoviesList.styled";
 import Container from "../components/Container";
 import { getMovieDetails } from "../services/movies-api";
 
 import { StyledLink } from "./MovieDetails.styled";
 
-import { Col, Divider, Row } from "antd";
+import { Col, Row } from "antd";
 
 const MovieDetails = () => {
   const [rows, setRows] = useState(2);
@@ -27,7 +28,6 @@ const MovieDetails = () => {
       try {
         setLoading(true);
         const data = await getMovieDetails(movieId);
-        // console.log("movie details:", data);
         setItem(data);
       } catch (error) {
         setError(error);
@@ -46,11 +46,11 @@ const MovieDetails = () => {
 
       <Row justify="start" gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
         <Col span={6}>
-          {" "}
-          <img
+          {/* <img
             src={`https://image.tmdb.org/t/p/w200${poster_path}`}
             alt={`poster of ${title} movie`}
-          />
+          /> */}
+          <BackgroundPoster bg={poster_path} />
         </Col>
         <Col span={18}>
           <div>

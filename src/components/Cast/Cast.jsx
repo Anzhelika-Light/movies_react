@@ -1,10 +1,11 @@
 import { useParams } from "react-router-dom";
 import { Col, Row } from "antd";
-import { getMovieCredits } from "../services/movies-api";
+import { getMovieCredits } from "../../services/movies-api";
 import { useState, useEffect } from "react";
+import { BackgroundImg } from "./Cast.styled";
 import { Typography } from "antd";
 
-import posterMissingPath from "../assets/Poster_missing.png";
+// import posterMissingPath from "../assets/Poster_missing.png";
 
 const { Title } = Typography;
 
@@ -48,10 +49,8 @@ const Cast = () => {
           }
           alt={`${name} photo`}
         /> */}
-        <img
-          src={`https://image.tmdb.org/t/p/w200${profile_path}`}
-          alt={`${name} photo`}
-        />
+
+        <BackgroundImg bg={profile_path} />
         <p>{name}</p>
         <p>{character}</p>
       </div>

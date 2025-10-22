@@ -20,7 +20,7 @@ export const Title = styled.p`
   font-weight: bold;
 `;
 
-export const BackgroundImg = styled.div`
+export const BackgroundPoster = styled.div`
   width: 268px;
   height: 402px;
   background-size: cover;
