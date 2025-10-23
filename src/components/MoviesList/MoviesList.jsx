@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import { Col, Row } from "antd";
-const style = { background: "#bbd4e8ff", padding: "0 0 8px" };
+const style = { background: "#bbd4e8ff", padding: "0 0 8px", height: "100%" };
 import { Img, Title } from "./MoviesList.styled";
 import { BackgroundPoster } from "./MoviesList.styled";
 

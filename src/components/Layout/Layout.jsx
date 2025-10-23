@@ -1,33 +1,28 @@
 import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
 const { Header, Content, Footer } = Layout;
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Nav, StyledNavLink } from "./Layout.styled";
 
 const PageLayout = () => {
   const [activeItem, setActiveItem] = useState(1);
+  const location = useLocation();
+
+  const selectedKey = location.pathname === "/" ? "/" : location.pathname;
 
   const items = [
-    { id: 1, page: "Home page", to: "/" },
-    { id: 2, page: "Movies collection", to: "/movies" },
-  ]
-    .map(({ page, to, id }) => (
-      <StyledNavLink
-        to={to}
-        // className={`${activeItem === id ? "active" : ""}`}
-        onClick={() => setActiveItem(id)}
-        active={`${activeItem === id}`}
-      >
-        {page}
-      </StyledNavLink>
-    ))
-    .map((item, index) => ({
-      key: index,
-      label: item,
-    }));
-  console.log(activeItem);
+    {
+      label: <Link to="/">Home</Link>,
+      key: "/",
+    },
+    {
+      label: <Link to="/movies">Movies</Link>,
+      key: "/movies",
+    },
+  ];
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -50,7 +45,7 @@ const PageLayout = () => {
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={["2"]}
+          selectedKeys={[selectedKey]}
           items={items}
           style={{ flex: 1, minWidth: 0 }}
         />

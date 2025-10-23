@@ -28,12 +28,14 @@ export const Nav = styled.nav`
 // `;
 
 export const StyledNavLink = styled(NavLink)`
-  // &.active {
-  //   backgroundcolor: "#1677ff";
-  // }
-  ${(props) =>
-    props.active &&
-    `
-    backgroundcolor: "#1677ff";
-  `}
+  &.active {
+    background-color: #1677ff;
+  }
 `;
+
+// ${(props) =>
+//   props.active &&
+//   `
+//   backgroundcolor: "#1677ff";
+// `}
+// `;
