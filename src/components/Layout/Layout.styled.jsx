@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
 import { NavLink } from "react-router-dom";
+import styled from "@emotion/styled";
 
 export const Nav = styled.nav`
   display: flex;
@@ -10,32 +10,8 @@ export const Nav = styled.nav`
   margin-bottom: 12px;
 `;
 
-// export const StyledNavLink = styled(NavLink)`
-//   color: darkblue;
-//   text-decoration: none;
-
-//   &.active {
-//     font-weight: bold;
-//   }
-
-//   &:hover {
-//     scale: 1.2;
-//   }
-
-//   &.active {
-//     backgroundcolor: "#1677ff";
-//   }
-// `;
-
 export const StyledNavLink = styled(NavLink)`
   &.active {
     background-color: #1677ff;
   }
 `;
-
-// ${(props) =>
-//   props.active &&
-//   `
-//   backgroundcolor: "#1677ff";
-// `}
-// `;

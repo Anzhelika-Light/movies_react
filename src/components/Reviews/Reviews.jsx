@@ -1,21 +1,15 @@
-import { useParams } from "react-router-dom";
-import { getMovieReviews } from "../../services/movies-api";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Typography } from "antd";
-import { Col, Row } from "antd";
-
 import { ListItem } from "./Reviews.styled";
-
-const { Title } = Typography;
+import { getMovieReviews } from "../../services/movies-api";
 
 const Reviews = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [rows, setRows] = useState(2);
-  const [expanded, setExpanded] = useState(false);
   const [ellipsis, setEllipsis] = useState(true);
-  const { Title, Paragraph, Text } = Typography;
+  const { Title, Paragraph } = Typography;
   const { movieId } = useParams();
 
   useEffect(() => {
@@ -26,7 +20,7 @@ const Reviews = () => {
         console.log(data.results);
         setItems((prevItems) => [...prevItems, ...data.results]);
       } catch (error) {
-        console.log(error);
+        setError(error);
       } finally {
         setLoading(false);
       }
@@ -39,17 +33,6 @@ const Reviews = () => {
   const elements = items.map(({ id, author, content }) => (
     <ListItem key={id}>
       <Title level={4}>{author}</Title>
-
-      {/* <Typography.Paragraph
-        ellipsis={{
-          rows,
-          expandable: "collapsible",
-          expanded,
-          onExpand: (_, info) => setExpanded(info.expanded),
-        }}
-      >
-        {content}
-      </Typography.Paragraph> */}
 
       <Paragraph
         ellipsis={

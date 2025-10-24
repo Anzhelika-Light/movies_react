@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Typography, Button, Flex } from "antd";
+import { useSearchParams } from "react-router-dom";
+import { Button, Flex } from "antd";
 import MovieSearchForm from "../components/MovieSearchForm.jsx";
 import MoviesList from "../components/MoviesList/MoviesList.jsx";
 import Container from "../components/Container.jsx";
 import { searchMovies } from "../services/movies-api";
-import { useLocation, useSearchParams } from "react-router-dom";
 
 const Movies = () => {
   const [items, setItems] = useState([]);
@@ -20,7 +20,6 @@ const Movies = () => {
       try {
         setLoading(true);
         const data = await searchMovies(query, page);
-        console.log(data);
         setItems((prevItems) => [...prevItems, ...data.results]);
       } catch (error) {
         setError(error);
@@ -33,7 +32,8 @@ const Movies = () => {
     }
   }, [page, query]);
 
-  const onSearch = (search) => {
+  const onSearch = ({ search }) => {
+    console.log(search);
     const nextParams = search !== "" ? { query: search } : {};
     setSearchParams(nextParams);
     setPage(1);

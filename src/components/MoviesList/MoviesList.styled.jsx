@@ -1,8 +1,6 @@
 import styled from "@emotion/styled";
 import posterMissingPath from "../../assets/Poster_missing.png";
 
-// import { Button } from "antd";
-
 export const List = styled.ul`
   list-style: none;
   text-align: left;
@@ -29,15 +27,3 @@ export const BackgroundPoster = styled.div`
       ? `https://image.tmdb.org/t/p/w200${props.bg}`
       : posterMissingPath});
 `;
-
-// export const CustomButton = styled(Button)`
-//   background-color: #722ed1;
-//   border-color: #722ed1;
-//   border-radius: 12px;
-//   color: white;
-
-//   &:hover {
-//     background-color: #9254de;
-//     border-color: #9254de;
-//   }
-// `;

@@ -1,13 +1,11 @@
 import { Suspense } from "react";
+import { useLocation } from "react-router-dom";
 import { Link, Outlet } from "react-router-dom";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
+
 const { Header, Content, Footer } = Layout;
-import { NavLink, useLocation } from "react-router-dom";
-import { useState } from "react";
-import { Nav, StyledNavLink } from "./Layout.styled";
 
 const PageLayout = () => {
-  const [activeItem, setActiveItem] = useState(1);
   const location = useLocation();
 
   const selectedKey = location.pathname === "/" ? "/" : location.pathname;

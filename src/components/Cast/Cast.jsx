@@ -1,11 +1,9 @@
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Col, Row } from "antd";
-import { getMovieCredits } from "../../services/movies-api";
-import { useState, useEffect } from "react";
-import { BackgroundImg } from "./Cast.styled";
 import { Typography } from "antd";
-
-// import posterMissingPath from "../assets/Poster_missing.png";
+import { BackgroundImg } from "./Cast.styled";
+import { getMovieCredits } from "../../services/movies-api";
 
 const { Title } = Typography;
 
@@ -41,30 +39,17 @@ const Cast = () => {
   const elements = items.map(({ id, profile_path, name, character }) => (
     <Col className="gutter-row" span={6} key={id}>
       <div style={style}>
-        {/* <img
-          src={
-            profile_path
-              ? `https://image.tmdb.org/t/p/w200${profile_path}`
-              : posterMissingPath
-          }
-          alt={`${name} photo`}
-        /> */}
-
         <BackgroundImg bg={profile_path} />
         <p>{name}</p>
         <p>{character}</p>
       </div>
     </Col>
   ));
-  console.log(items);
 
   return (
     <div>
       <Title level={3}>Cast</Title>
-      {isInfo && (
-        // <Row gutter={[{ xs: 8, sm: 16, md: 24, lg: 32 }, 24]}>{elements}</Row>
-        <Row gutter={[16, 24]}>{elements}</Row>
-      )}
+      {isInfo && <Row gutter={[16, 24]}>{elements}</Row>}
 
       {loading && <p>...loading</p>}
       {error && <p>Oops! Something went wrong. Try again later, please.</p>}
